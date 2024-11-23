@@ -1,12 +1,10 @@
 package vn.hieupham.laptopshop.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.ui.Model;
 import vn.hieupham.laptopshop.service.UserService;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -24,6 +22,13 @@ public class UserController{
         model.addAttribute("pham",t);
         model.addAttribute("trun", "yess sirr");
         return "hi";
+    }
+    @RequestMapping("/admin/user")
+    public String getUserPage(Model model){
+        String t = this.userService.handleHello();
+        model.addAttribute("pham",t);
+        model.addAttribute("trun", "yess sirr");
+        return "admin/user/create";
     }
     
 }
