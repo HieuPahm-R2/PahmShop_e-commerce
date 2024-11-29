@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,36 +22,32 @@
                 <!-- <h2>Welcome Bro</h2> -->
                 <h3 class="text-center">Create new account</h3>
                 <hr/>
-                <form>
+                <form:form method="post" action="/admin/user/create" modelAttribute="newUser">
                     <div class="form-group mb-3">
                       <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <form:input type="email" class="form-control" path="email" aria-describedby="emailHelp" placeholder="Enter email"/>
                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                 
                     <div class="form-group mb-3">
                       <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group form-check mb-3">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      <form:input type="password" class="form-control" path="password" placeholder="Password"/>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="exampleInputPassword1">Phone number:</label>
-                        <input type="text" class="form-control" placeholder="Your phone number">
+                        <form:input type="text" path="phone" class="form-control" placeholder="Your phone number"/>
                       </div>
                       <div class="form-group mb-3">
                         <label for="exampleInputPassword1">Full Name:</label>
-                        <input type="text" class="form-control" placeholder="Your full name">
+                        <form:input type="text" path="fullName" class="form-control" placeholder="Your full name"/>
                       </div>
                       <div class="form-group mb-3">
                         <label for="exampleInputPassword1">Address:</label>
-                        <input type="text" class="form-control" placeholder="Your address">
+                        <form:input type="text" path="address" class="form-control" placeholder="Your address"/>
                       </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                  </form:form>
             </div>
         </div>
     </div>

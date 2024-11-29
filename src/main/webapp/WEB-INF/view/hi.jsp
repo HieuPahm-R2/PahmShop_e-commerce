@@ -18,6 +18,6 @@
     <h1 style="color: aqua;"> from jsp with Love</h1>
     <h2>${pham}</h2>
     <h3>${trun}</h3>
-    <button>buy now</button>
+    <button class="btn btn-success">buy now</button>
 </body>
 </html>
