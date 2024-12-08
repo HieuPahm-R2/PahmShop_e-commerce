@@ -12,7 +12,21 @@
     <meta name="author" content="">
 
     <title>PahmStudio - Dashboard</title>
-
+ <!--bootstrap 5-->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ <!--Jquery-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+ <script>
+    $(document).ready(()=>{
+        const avatarFile = $("#avatarFile");
+        avatarFile.change(function(e){
+            const imgUrl = URL.createObjectURL(e.target.files[0]);
+            $("#avatarPreview").attr("src",imgUrl);
+            $("#avatarPreview").css({"display":"block"});
+        });
+    });
+ </script>
     <!-- Custom fonts for this template-->
     <link href="/css/all.css" rel="stylesheet" type="text/css">
     <link
@@ -34,7 +48,7 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" >
 
             <!-- Main Content -->
             <div id="content">
@@ -49,47 +63,65 @@
                         <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
-                    <div class="container mt-5">
+                    <div class="mt-5">
                       <div class="row">
                           <div class="col-md-6 col-12 mx-auto">
                               <!-- <h2>Welcome Bro</h2> -->
                               <h3 class="text-center">Create new account</h3>
                               <hr/>
-                              <form:form method="post" action="/admin/user/create" modelAttribute="newUser">
-                                  <div class="form-group mb-3">
+                              <form:form class="row" method="post" action="/admin/user/create" 
+                              modelAttribute="newUser"
+                              enctype="multipart/form-data"
+                              />
+                                  <div class="mb-3 col-12 col-md-6">
                                     <label for="exampleInputEmail1">Email address</label>
                                     <form:input type="email" class="form-control" path="email" aria-describedby="emailHelp" placeholder="Enter email"/>
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                   </div>
                               
-                                  <div class="form-group mb-3">
+                                  <div class="mb-3 col-12 col-md-6">
                                     <label for="exampleInputPassword1">Password</label>
                                     <form:input type="password" class="form-control" path="password" placeholder="Password"/>
                                   </div>
               
-                                  <div class="form-group mb-3">
+                                  <div class="mb-3 col-12 col-md-6">
                                       <label for="exampleInputPassword1">Phone number:</label>
                                       <form:input type="text" path="phone" class="form-control" placeholder="Your phone number"/>
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="mb-3 col-12 col-md-6">
                                       <label for="exampleInputPassword1">Full Name:</label>
                                       <form:input type="text" path="fullName" class="form-control" placeholder="Your full name"/>
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="mb-3 col-12">
                                       <label for="exampleInputPassword1">Address:</label>
                                       <form:input type="text" path="address" class="form-control" placeholder="Your address"/>
                                     </div>
-                                  <button type="submit" class="btn btn-primary">Submit</button>
+
+                                    <div class="mb-3 col-12 col-md-6">
+                                        <label class="form-label">Role:</label>
+                                        <form:select class="form-select form-select-md mb-3" path="role.name">
+                                            <option selected>Open this select menu</option>
+                                            <form:option value="Admin" >Administrator</form:option>
+                                            <form:option value="User">User</form:option>
+                                            <form:option value="Hr">Human resource</form:option>
+                                          </form:select>
+                                    </div>
+                                    <div class="mb-3 col-12 col-md-6">
+                                        <label for="avatarFile" class="form-label">Avatar:</label>
+                                        <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg" name="hieuFile"/>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <img id="avatarPreview" style="max-height: 250px; display: none;" alt="avatar preview">
+                                    </div>
+                                   <div class="col-12 mb-5">
+                                    <button type="submit" style="width: 100%;" class="btn btn-primary">Create now</button>
+                                   </div>
                                 </form:form>
                           </div>
                       </div>
                   </div>
                 
                 </div>
-                
-
-                
- 
 
             </div>
             <!-- End of Main Content -->
