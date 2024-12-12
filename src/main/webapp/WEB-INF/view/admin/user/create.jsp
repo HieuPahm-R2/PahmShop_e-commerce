@@ -70,9 +70,8 @@
                               <h3 class="text-center">Create new account</h3>
                               <hr/>
                               <form:form class="row" method="post" action="/admin/user/create" 
-                              modelAttribute="newUser"
-                              enctype="multipart/form-data"
-                              />
+                                    modelAttribute="newUser"
+                                    enctype="multipart/form-data">
                                   <div class="mb-3 col-12 col-md-6">
                                     <label for="exampleInputEmail1">Email address</label>
                                     <form:input type="email" class="form-control" path="email" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -116,7 +115,7 @@
                                    <div class="col-12 mb-5">
                                     <button type="submit" style="width: 100%;" class="btn btn-primary">Create now</button>
                                    </div>
-                                </form:form>
+                            </form:form>
                           </div>
                       </div>
                   </div>

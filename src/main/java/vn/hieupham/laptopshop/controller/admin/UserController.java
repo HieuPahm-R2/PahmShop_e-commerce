@@ -1,11 +1,8 @@
 package vn.hieupham.laptopshop.controller.admin;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -34,10 +31,12 @@ public class UserController{
 
     private final UserService userService; 
     private final UploadService uploadService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService,UploadService uploadService){
+    public UserController(UserService userService,UploadService uploadService, PasswordEncoder passwordEncoder){
         this.userService = userService;
         this.uploadService = uploadService;
+        this.passwordEncoder = passwordEncoder;
     }
     @RequestMapping("/")
     public String getHomePage(Model model){
@@ -69,7 +68,13 @@ public class UserController{
      @ModelAttribute("newUser") User hieupham, 
      @RequestParam("hieuFile") MultipartFile file){
        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
-        // this.userService.handleUserSave(hieupham);
+       String hashPassword = this.passwordEncoder.encode(hieupham.getPassword());
+
+       hieupham.setAvatar(avatar);
+       hieupham.setPassword(hashPassword);
+       hieupham.setRole(this.userService.getRoleByName(hieupham.getRole().getName()));
+       //save
+        this.userService.handleUserSave(hieupham);
         return "redirect:/admin/user";
     }
     @RequestMapping("/admin/user/update/{id}")
