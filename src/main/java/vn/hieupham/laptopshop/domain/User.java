@@ -2,6 +2,8 @@ package vn.hieupham.laptopshop.domain;
 
 import java.util.List;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,8 +21,11 @@ public class User {
     private long id;
     
     private String email;
+
     private String password;
+
     private String fullName;
+    
     private String address;
     private String phone;
 

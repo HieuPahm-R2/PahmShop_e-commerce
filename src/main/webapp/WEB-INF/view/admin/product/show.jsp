@@ -43,22 +43,49 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid px-4">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Products</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    <h1 class="h3 mb-0 text-gray-800">Products</h1>
+                    <div class="mt-5">
+                                <div class="row">
+                                    <div class="col-12 mx-auto">
+                                        <div class="d-flex justify-content-between">
+                                            <h3>Table Users</h3>
+                                            <a href="/admin/product/create" class="btn btn-primary">Add new user</a>
+                                        </div>
+                                        <hr/>
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col"> ID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Manufacture</th>
+                                                <th scope="col">Status Action</th>
+                                              </tr>
+                                            </thead>
+                                            <!-- <tbody>
+                                                <c:forEach var="user" items="${users1}">
+                                                    <tr>
+                                                        <td style="text-align: center">${user.id}</td>
+                                                        <td>${user.email}</td>
+                                                        <td style="text-align: center">${user.fullName}</td>
+                                                        <td style="text-align: center">${user.role.name}</td>
+                                                        <td>
+                                                            <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
+                                                            <a href="/admin/user/update/${user.id}" class="btn btn-warning">Update</a>
+                                                            <a href="/admin/user/delete/${user.id}" class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody> -->
+                                          </table>
+                                    </div>
+                                </div>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                       
-
-                    
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -88,66 +115,11 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Row -->
-
-                    <div class="row">
-
-                        
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
-
-                        <!-- Content Column -->
                         <div class="col-lg-6 mb-4">
-
-                            
-
-    
-                            
-                        </div>
-
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="images/undraw_posting_photo.svg" alt="...">
-                                    </div>
-                                    <p>Add some quality, svg illustrations to your project courtesy of <a
-                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a>
-                                </div>
-                            </div>
-
                             <!-- Approach -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
