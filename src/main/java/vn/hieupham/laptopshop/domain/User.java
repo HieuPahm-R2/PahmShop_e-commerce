@@ -2,7 +2,11 @@ package vn.hieupham.laptopshop.domain;
 
 import java.util.List;
 
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,11 +23,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
+    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
 
+    @NotNull
+    @Size(min = 2, message = "Must be greater than 3 chars")
     private String password;
 
+    @NotNull
+    @Size(min = 4, message = "Must be greater than 4 chars")
     private String fullName;
     
     private String address;

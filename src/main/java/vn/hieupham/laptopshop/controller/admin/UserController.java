@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 import vn.hieupham.laptopshop.domain.User;
 import vn.hieupham.laptopshop.repository.UserRepository;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -61,8 +63,11 @@ public class UserController{
     }
     @PostMapping("/admin/user/create")
     public String createUserPage(Model model,
-     @ModelAttribute("newUser") User hieupham, 
+     @ModelAttribute("newUser") @Valid User hieupham, 
+     BindingResult newUserBindingResult,
      @RequestParam("hieuFile") MultipartFile file){
+        if(newUserBindingResult.hasErrors()) return "/admin/user/create";
+
        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
        String hashPassword = this.passwordEncoder.encode(hieupham.getPassword());
 
@@ -73,7 +78,7 @@ public class UserController{
         this.userService.handleUserSave(hieupham);
         return "redirect:/admin/user";
     }
-    @RequestMapping("/admin/user/update/{id}")
+    @GetMapping("/admin/user/update/{id}")
     public String getUpdateUserPage(Model model, @PathVariable long id){
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser);
@@ -90,6 +95,7 @@ public class UserController{
         }
         return "redirect:/admin/user";
     }
+    //delete
     @GetMapping("/admin/user/delete/{id}")
     public String getDeleteUserPage(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
@@ -105,17 +111,3 @@ public class UserController{
     
 }
 
-// @RestController
-// public class UserController {
-//    private UserService userService;
-   
-//     //DI : Dependency injection
-//     public UserController(UserService userService) {
-//     this.userService = userService;
-// }
-
-//     @GetMapping(" ")
-//     public String getHomePage(){
-//         return this.userService.handleHello();
-//     }
-// }

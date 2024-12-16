@@ -60,8 +60,8 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Manage Products</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="/admin">Product Info</a></li>
+                        <li class="breadcrumb-item active">Create new Product</li>
                     </ol>
                     <div class="mt-5">
                       <div class="row">
@@ -69,22 +69,42 @@
                               <!-- <h2>Welcome Bro</h2> -->
                               <h3 class="text-center">Add New Product</h3>
                               <hr/>
-                              <form:form class="row" method="post" action="/admin/user/create" 
+                              <form:form class="row" method="post" action="/admin/product/create" 
                                     modelAttribute="newProduct"
                                     enctype="multipart/form-data">
+                                    <c:set var="errorName">
+                                        <form:errors path="name" cssClass="invalid-feedback"/>
+                                    </c:set>
+                                    <c:set var="errorPrice">
+                                        <form:errors path="price" cssClass="invalid-feedback"/>
+                                    </c:set>
+                                    <c:set var="errorDetailDesc">
+                                        <form:errors path="detailDesc" cssClass="invalid-feedback"/>
+                                    </c:set>
+                                    <c:set var="errorShortDesc">
+                                        <form:errors path="shortDesc" cssClass="invalid-feedback"/>
+                                    </c:set>
+                                    <c:set var="errorQuantity">
+                                        <form:errors path="quantity" cssClass="invalid-feedback"/>
+                                    </c:set>
                                   <div class="mb-3 col-12 col-md-6">
                                     <label for="exampleInputEmail1">Product Name:</label>
-                                    <form:input type="text" class="form-control" path="name" placeholder="ASUS Vivobook A15"/>
+                                    <form:input type="text" class="form-control ${not empty errorName ? 'is-invalid' : ''}"
+                                    path="name" placeholder="ASUS Vivobook A15"/>
+                                    ${errorName}
                                   </div>
                               
                                   <div class="mb-3 col-12 col-md-6">
                                     <label for="exampleInputPassword1">Price:</label>
-                                    <form:input type="text" class="form-control" path="price" placeholder="xx.000.000 VND"/>
+                                    <form:input type="text" class="form-control ${not empty errorPrice ? 'is-invalid' : ''}" 
+                                    path="price" placeholder="xx.000.000 VND"/>
+                                    ${errorPrice}
                                   </div>
               
                                   <div class="mb-3 col-12">
                                       <label for="exampleInputPassword1">Detail Description:</label>
-                                      <form:input type="text" path="detailDesc" class="form-control" />
+                                      <form:input type="text" path="detailDesc" class="form-control ${not empty errorDetailDesc ? 'is-invalid' : ''}" />
+                                      ${errorDetailDesc}
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">
                                       <label for="exampleInputPassword1">Short Description:</label>
@@ -92,7 +112,8 @@
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">
                                       <label for="exampleInputPassword1">Quantity:</label>
-                                      <form:input type="text" path="quantity" class="form-control"/>
+                                      <form:input type="text" path="quantity" class="form-control ${not empty errorQuantity ? 'is-invalid' : ''}"/>
+                                    ${errorQuantity}
                                     </div>
 
                                     <div class="mb-3 col-12 col-md-6">
@@ -121,7 +142,7 @@
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">
                                         <label for="avatarFile" class="form-label">Illustrations:</label>
-                                        <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg" name="hieuFile"/>
+                                        <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg, .webp" name="hieuFile"/>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <img id="avatarPreview" style="max-height: 250px; display: none;" alt="avatar preview">

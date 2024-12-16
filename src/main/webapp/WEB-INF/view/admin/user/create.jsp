@@ -66,6 +66,19 @@
                     <div class="mt-5">
                       <div class="row">
                           <div class="col-md-6 col-12 mx-auto">
+
+                            <c:set var="errorEmail">
+                                <form:errors path="email" cssClass="invalid-feedback"/>
+                            </c:set>
+                            <c:set var="errorPassword">
+                                <form:errors path="password" cssClass="invalid-feedback"/>
+                            </c:set>
+                            <c:set var="errorFullName">
+                                <form:errors path="fullName" cssClass="invalid-feedback"/>
+                            </c:set>
+                            <c:set var="errorPhone">
+                                <form:errors path="phone" cssClass="invalid-feedback"/>
+                            </c:set>
                               <!-- <h2>Welcome Bro</h2> -->
                               <h3 class="text-center">Create new account</h3>
                               <hr/>
@@ -74,14 +87,17 @@
                                     enctype="multipart/form-data">
                                   <div class="mb-3 col-12 col-md-6">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <form:input type="email" class="form-control" path="email" aria-describedby="emailHelp" placeholder="Enter email"/>
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                    <form:input type="email" class="form-control ${not empty errorEmail ? 'is-invalid' : ''}" path="email" 
+                                    aria-describedby="emailHelp" placeholder="Enter email"/>
+                                    ${errorEmail}
+                                    
                                   </div>
                               
                                   <div class="mb-3 col-12 col-md-6">
                                     <label for="exampleInputPassword1">Password</label>
-                                    <form:input type="password" class="form-control" path="password" placeholder="Password"/>
-                                  </div>
+                                    <form:input type="password" class="form-control ${not empty errorPassword ? 'is-invalid' : ''}" path="password" placeholder="Password"/>
+                                    ${errorPassword}
+                                </div>
               
                                   <div class="mb-3 col-12 col-md-6">
                                       <label for="exampleInputPassword1">Phone number:</label>
@@ -89,7 +105,8 @@
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">
                                       <label for="exampleInputPassword1">Full Name:</label>
-                                      <form:input type="text" path="fullName" class="form-control" placeholder="Your full name"/>
+                                      <form:input type="text" path="fullName" class="form-control ${not empty errorFullName ? 'is-invalid' : ''}" placeholder="Your full name"/>
+                                        ${errorFullName}
                                     </div>
                                     <div class="mb-3 col-12">
                                       <label for="exampleInputPassword1">Address:</label>
@@ -173,10 +190,6 @@
     <!-- Page level plugins -->
     <script src="js/Chart.js"></script>
 
-    <!-- Page level custom scripts -->
-       <!-- Page level custom scripts -->
-    <script src="js/chart-area-demo.js"></script>
-    <script src="js/chart-pie-demo.js"></script>
 
 
 
