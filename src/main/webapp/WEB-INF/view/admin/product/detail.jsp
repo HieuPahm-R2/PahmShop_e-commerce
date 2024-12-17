@@ -119,22 +119,17 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="js/jquery.easing.js"></script>
+    <script src="/js/jquery.easing.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.js"></script>
+    <script src="/js/sb-admin-2.js"></script>
 
     <!-- Page level plugins -->
-    <script src="js/Chart.js"></script>
-
-    <!-- Page level custom scripts -->
-       <!-- Page level custom scripts -->
-    <script src="js/chart-area-demo.js"></script>
-    <script src="js/chart-pie-demo.js"></script>
+    <script src="/js/Chart.js"></script>
 
 
 

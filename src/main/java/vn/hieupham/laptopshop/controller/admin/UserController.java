@@ -78,6 +78,7 @@ public class UserController{
         this.userService.handleUserSave(hieupham);
         return "redirect:/admin/user";
     }
+    //update
     @GetMapping("/admin/user/update/{id}")
     public String getUpdateUserPage(Model model, @PathVariable long id){
         User currentUser = this.userService.getUserById(id);
@@ -85,9 +86,18 @@ public class UserController{
         return "admin/user/update";
     }
     @PostMapping("/admin/user/update")
-    public String postUpdateUser(Model model, @ModelAttribute("newUser") User hieupham){
+    public String postUpdateUser(Model model, @ModelAttribute("newUser") @Valid User hieupham,
+    BindingResult newUserBindingResult, @RequestParam("hieuFile") MultipartFile file){
+        if(newUserBindingResult.hasErrors()){
+            return "/admin/user/update";
+        }
         User currentUser = this.userService.getUserById(hieupham.getId());
         if(currentUser != null){
+            if(!file.isEmpty()){
+                String img = this.uploadService.handleSaveUploadFile(file, "avatar");
+                currentUser.setAvatar(img);
+            }
+            currentUser.setEmail(hieupham.getEmail());
             currentUser.setAddress(hieupham.getAddress());
             currentUser.setFullName(hieupham.getFullName());
             currentUser.setPhone(hieupham.getPhone());

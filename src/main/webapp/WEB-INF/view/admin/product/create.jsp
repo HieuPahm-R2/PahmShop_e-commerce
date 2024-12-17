@@ -142,7 +142,7 @@
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">
                                         <label for="avatarFile" class="form-label">Illustrations:</label>
-                                        <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg, .webp" name="hieuFile"/>
+                                        <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg" name="hieuFile"/>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <img id="avatarPreview" style="max-height: 250px; display: none;" alt="avatar preview">

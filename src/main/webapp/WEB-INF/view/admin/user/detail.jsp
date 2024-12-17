@@ -45,7 +45,7 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Manage Users</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/admin/user">Dashboard</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                     <div class="mt-5">
@@ -55,7 +55,8 @@
                                     <h3>Detailed User information </h3>
                                 </div>
                                 <hr/>
-                                <div class="card" style="width: 65%">
+                                <div class="card" style="width: 60%">
+                                    <img src="/images/avatar/${user.avatar}" class="card-img-top" alt="">
                                     <div class="card-header">
                                       User account information of ${id}
                                     </div>

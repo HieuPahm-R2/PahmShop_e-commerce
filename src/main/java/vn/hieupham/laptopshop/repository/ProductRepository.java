@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import vn.hieupham.laptopshop.domain.Product;
 
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-
+    Product save(Product pr);
+    
+    Product findById(long id);
+    
 }

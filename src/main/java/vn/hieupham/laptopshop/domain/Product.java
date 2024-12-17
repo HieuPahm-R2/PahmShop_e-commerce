@@ -23,6 +23,7 @@ public class Product {
     @NotNull
     @DecimalMin(value = "0", inclusive = false, message = " Giá sản phẩm phải lớn hơn 0")
     private String price;
+
     private String image;
 
     @NotNull
@@ -31,7 +32,9 @@ public class Product {
 
     @NotNull
     private String shortDesc;
+
     private long quantity;
+    
     private long sold;
     private String factory;
     private String target;

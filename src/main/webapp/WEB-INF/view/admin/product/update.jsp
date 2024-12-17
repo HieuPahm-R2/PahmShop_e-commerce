@@ -93,6 +93,10 @@
                                       <c:set var="errorQuantity">
                                           <form:errors path="quantity" cssClass="invalid-feedback"/>
                                       </c:set>
+                                    <div class="form-group mb-3" style="display: none;">
+                                        <label class="form-label">Id:</label>
+                                        <form:input type="text"   class="form-control" path="id"/>
+                                    </div>  
                                     <div class="mb-3 col-12 col-md-6">
                                       <label for="exampleInputEmail1">Product Name:</label>
                                       <form:input type="text" class="form-control ${not empty errorName ? 'is-invalid' : ''}"
@@ -138,25 +142,24 @@
                                           <label class="form-label">Target:</label>
                                           <form:select class="form-select form-select-md mb-3" path="target">
                                               <option selected>Open this select menu</option>
-                                              <form:option value="Admin" >Gaming</form:option>
+                                              <form:option value="Gaming" >Gaming</form:option>
                                               <form:option value="Graphic design">Graphic design</form:option>
-                                              <form:option value="Hr">office tasks</form:option>
-                                              <form:option value="Hr">Business</form:option>
+                                              <form:option value="office tasks">office tasks</form:option>
+                                              <form:option value="Business">Business</form:option>
                                               <form:option value="mining coins">mining coins</form:option>
                                               <form:option value="Watch movies">Watch movies</form:option>
                                             </form:select>
                                       </div>
                                       <div class="mb-3 col-12 col-md-6">
                                           <label for="avatarFile" class="form-label">Illustrations:</label>
-                                          <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg, .webp" name="hieuFile"/>
+                                          <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg" name="hieuFile"/>
                                       </div>
                                       <div class="col-12 mb-3">
                                           <img id="avatarPreview" style="max-height: 250px; display: none;" alt="avatar preview">
                                       </div>
-                                     <div class="col-12 mb-5">
+                                     
                                       <button type="submit" style="width: 100%;" class="btn btn-primary">Update now</button>
-                                     </div>
-                              </form:form>
+                                    </form:form>
                             </div>
                         </div>
                     </div>
