@@ -50,25 +50,29 @@
                     </ol>
                     <div class="mt-5">
                         <div class="row">
-                            <div class="col-12 mx-auto">
-                                <div class="d-flex justify-content-between">
-                                    <h3>Detailed product information </h3>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <h3>Detailed product information </h3>
+                            </div>
+                            <div class="col-12 mx-auto d-flex">
                                 <hr/>
-                                <div class="card" style="width: 65%">
+                                <div class="image_display col-6 mb-2" style="width: 40%; border-radius: 10px; background-size: cover;">
                                     <img src="/images/product/${product.image}" class="card-img-top" alt="">
+                                </div>
+                                <div class="card col-6" style="width: 100%">
                                     <div class="card-header">
                                       Product information of ${id}
                                     </div>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush " >
                                       <li class="list-group-item">Id : ${product.id}</li>
                                       <li class="list-group-item">Product name:  ${product.name}</li>
+                                      <li class="list-group-item" >Detail description:  ${product.detailDesc}</li>
                                       <li class="list-group-item">Price:  ${product.price}</li>
-                                  
+                                      <li class="list-group-item">
+                                        <a href="/admin/product" class="btn btn-success mt-3">Back to Dashboard</a>
+                                      </li>
                                     </ul>
                                   </div>
-                                  <a href="/admin/product" class="btn btn-success mt-3">Back to Dashboard</a>
-                                  </table>
+                                
                             </div>
                         </div>
                     </div>

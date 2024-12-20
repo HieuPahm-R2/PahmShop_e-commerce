@@ -136,6 +136,7 @@
                                               <form:option value="Huawei">Huawei</form:option>
                                               <form:option value="Xiaomi">Xiaomi</form:option>
                                               <form:option value="ASUS">ASUS</form:option>
+                                              <form:option value="Lenovo">Lenovo</form:option>
                                             </form:select>
                                       </div>
                                       <div class="mb-3 col-12 col-md-6">

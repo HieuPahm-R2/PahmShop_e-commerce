@@ -103,7 +103,7 @@
               
                                   <div class="mb-3 col-12">
                                       <label for="exampleInputPassword1">Detail Description:</label>
-                                      <form:input type="text" path="detailDesc" class="form-control ${not empty errorDetailDesc ? 'is-invalid' : ''}" />
+                                      <form:textarea type="text" path="detailDesc" class="form-control ${not empty errorDetailDesc ? 'is-invalid' : ''}" />
                                       ${errorDetailDesc}
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">
@@ -120,24 +120,25 @@
                                         <label class="form-label">Manufacture:</label>
                                         <form:select class="form-select form-select-md mb-3" path="factory">
                                             <option selected>Open this select menu</option>
-                                            <form:option value="Admin" >Apple</form:option>
-                                            <form:option value="User">Samsung</form:option>
-                                            <form:option value="Hr">DELL</form:option>
-                                            <form:option value="Hr">Huawei</form:option>
-                                            <form:option value="Hr">Xiaomi</form:option>
-                                            <form:option value="Hr">ASUS</form:option>
+                                            <form:option value="Apple" >Apple</form:option>
+                                            <form:option value="Samsung">Samsung</form:option>
+                                            <form:option value="DELL">DELL</form:option>
+                                            <form:option value="Huawei">Huawei</form:option>
+                                            <form:option value="Xiaomi">Xiaomi</form:option>
+                                            <form:option value="ASUS">ASUS</form:option>
+                                            <form:option value="Lenovo">Lenovo</form:option>
                                           </form:select>
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">
                                         <label class="form-label">Target:</label>
                                         <form:select class="form-select form-select-md mb-3" path="target">
                                             <option selected>Open this select menu</option>
-                                            <form:option value="Admin" >Gaming</form:option>
-                                            <form:option value="User">Graphic design</form:option>
-                                            <form:option value="Hr">office tasks</form:option>
-                                            <form:option value="Hr">Business</form:option>
-                                            <form:option value="Hr">mining coins</form:option>
-                                            <form:option value="Hr">Watch movies</form:option>
+                                            <form:option value="Gaming" >Gaming</form:option>
+                                            <form:option value="Graphic designr">Graphic design</form:option>
+                                            <form:option value="office tasks">office tasks</form:option>
+                                            <form:option value="Business">Business</form:option>
+                                            <form:option value="mining coins">mining coins</form:option>
+                                            <form:option value="Watch movies">Watch movies</form:option>
                                           </form:select>
                                     </div>
                                     <div class="mb-3 col-12 col-md-6">
