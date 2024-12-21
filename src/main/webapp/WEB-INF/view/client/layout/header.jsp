@@ -2,8 +2,8 @@
     <div class="container topbar d-none d-lg-block" style="background-color: aqua;">
         <div class="d-flex justify-content-between">
             <div class="top-info ps-2">
-                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">123 Street, New York</a></small>
-                <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
+                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Sale all up to 89%</a></small>
+                <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Happy new year 2025</a></small>
             </div>
             <div class="top-link pe-2">
                     <a href="#" class="text-white"><small class="text-white mx-2">Merry Christmas 2024</small>/</a>

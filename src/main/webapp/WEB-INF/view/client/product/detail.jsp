@@ -46,7 +46,7 @@
         <!-- Navbar End -->
 
 
-        <!-- Modal Search Start -->
+        <!-- Modal Search Start
         <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content rounded-0">
@@ -62,14 +62,20 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Modal Search End -->
-
 
         <!-- Single Product Start -->
         <div class="container-fluid py-5 mt-5">
             <div class="container py-5">
                 <div class="row g-4 mb-5">
+                    <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-3 mt-2">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active">${product.name}</li>
+                            </ol>
+                    </nav>
+                    
                     <div class="col-lg-8 col-xl-9">
                         <div class="row g-4">
                             <div class="col-lg-6">
