@@ -45,6 +45,14 @@ background-image: linear-gradient(270deg, #afd4d9 0%, #97D9E1 50%, #ffffff 100%)
                             </div>
                             <form:form class="user" method="post" action="/register"
                                  modelAttribute="registerUser">
+                                 <!--init error ano-->
+                                <c:set var="errorPassword">
+                                    <form:errors path="confirmPassword" cssClass="invalid-feedback"/>
+                                </c:set>
+                                <c:set var="errorEmail">
+                                    <form:errors path="email" cssClass="invalid-feedback"/>
+                                </c:set> 
+                                <!--end-->
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <form:input type="text" class="form-control form-control-user" id="exampleFirstName" path="firstName"
@@ -56,22 +64,28 @@ background-image: linear-gradient(270deg, #afd4d9 0%, #97D9E1 50%, #ffffff 100%)
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <form:input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <form:input type="email" class="form-control ${not empty errorEmail ? 'is-invalid' : ''} 
+                                    form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address" path="email" />
+                                    ${errorEmail}
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <form:input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" path="password"/>
+                                        <form:input type="password" class="form-control 
+                                        ${not empty errorEmail ? 'is-invalid' : ''}
+                                        form-control-user"
+                                        id="exampleInputPassword" placeholder="Password" path="password"/>
+                                        ${errorPassword}
                                     </div>
+
                                     <div class="col-sm-6">
                                         <form:input type="password" class="form-control form-control-user"
                                             id="exampleRepeatPassword" placeholder="Repeat Password" path="confirmPassword"/>
                                     </div>
                                 </div>
-                                <a href="/" class="btn btn-primary btn-user btn-block">
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
-                                </a>
+                                </button>
                                 <hr>
                                 <a href="/" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
@@ -85,7 +99,7 @@ background-image: linear-gradient(270deg, #afd4d9 0%, #97D9E1 50%, #ffffff 100%)
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="/login">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

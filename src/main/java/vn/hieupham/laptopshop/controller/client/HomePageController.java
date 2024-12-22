@@ -45,6 +45,10 @@ public class HomePageController {
     @PostMapping("/register")
     public String handleRegister(@ModelAttribute("registerUser") @Valid RegisterDTO registerDTO
     ,BindingResult bindingResult){
+        //validate
+        if(bindingResult.hasErrors()){
+            return "client/auth/register";
+        }
         User user = this.userService.registerDTOtoUser(registerDTO);
 
         String hashPassword = this.passwordEncoder.encode(user.getPassword());
