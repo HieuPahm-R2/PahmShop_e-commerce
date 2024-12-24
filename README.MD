@@ -1,5 +1,5 @@
-# Java Spring Starter template
- Java Spring MVC (dự án laptopshop) 
+# Java Spring 
+ This project built according to the MVC model
 
 ## Thanks for visiting here
 
