@@ -34,7 +34,7 @@ public class HomePageController {
     public String getHomePage(Model model){
         List<Product> products = this.productService.fetchProducts();
         model.addAttribute("products", products);
-        return "/client/home/show";
+        return "client/home/show";
     }
     //register
     @GetMapping("/register")
@@ -60,7 +60,6 @@ public class HomePageController {
     }
     @GetMapping("/login")
     public String getLoginPage(Model model){
-
         return "client/auth/login";
     }
 }

@@ -42,7 +42,7 @@ public class UserController{
         model.addAttribute("pham","t");
         model.addAttribute("trun", "yess sirr");
         return "hi";
-    }
+    }   
     @RequestMapping("/admin/user")
     public String getUserPage(Model model){
         List<User> users = this.userService.getAllUsers();

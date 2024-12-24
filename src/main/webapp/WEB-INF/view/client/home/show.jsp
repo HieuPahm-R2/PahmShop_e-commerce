@@ -27,7 +27,7 @@
       <!-- Template Stylesheet -->
       <link href="/client/css/style.css" rel="stylesheet">
 </head>
-<body style="height: 100%; background-image: url(/images/bgShop.webp)">
+<body>
     <!-- Spinner Start -->
     <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
@@ -68,7 +68,7 @@
 
 
     <!-- Fruits Shop Start-->
-    <div class="container-fluid fruite py-5">
+    <div class="container-fluid fruite py-5" style="background-color: azure;">
         <div class="container py-5">
             <div class="tab-class text-center">
                 <div class="row g-4">
@@ -419,11 +419,7 @@
         <div></div>
       </div>
 
-    <!-- Footer Start -->
-    
-    <!-- Footer End --> <!-- Copyright Start -->
-    <jsp:include page="../layout/footer.jsp" />
-    <!-- Copyright End -->
+  
 
 
     <!-- Back to Top -->
@@ -441,4 +437,10 @@
 <!-- Template Javascript -->
 <script src="/client/js/main.js"></script>
 </body>
+<footer>
+      <!-- Footer Start -->
+    <!-- Footer End --> <!-- Copyright Start -->
+    <jsp:include page="../layout/footer.jsp" />
+    <!-- Copyright End -->
+</footer>
 </html>
