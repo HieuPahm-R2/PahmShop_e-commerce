@@ -18,6 +18,9 @@
                         <div class="carousel-item rounded">
                             <img src="/client/img/mac4.webp" class="img-fluid w-100 h-100 rounded" alt="Second slide">
                         </div>
+                        <div class="carousel-item rounded">
+                            <img src="/client/img/watch-fit3-tet-ant-2025.webp" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                        </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
