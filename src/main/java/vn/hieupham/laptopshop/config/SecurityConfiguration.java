@@ -32,8 +32,6 @@ public class SecurityConfiguration {
     public AuthenticationSuccessHandler customSuccessHandler(){
         return new CustomSuccessHandler();
 }
-
-
     @Bean
     public DaoAuthenticationProvider authProvider(PasswordEncoder passwordEncoder,
     UserDetailsService userDetailsService){
@@ -57,7 +55,8 @@ public class SecurityConfiguration {
             .formLogin(formLogin -> formLogin
             .loginPage("/login")
             .successHandler(customSuccessHandler())
-            .failureUrl("/login?error").permitAll());
+            .failureUrl("/login?error").permitAll())
+            .exceptionHandling(ex -> ex.accessDeniedPage("/accessDenied"));
 
         return http.build();
     }

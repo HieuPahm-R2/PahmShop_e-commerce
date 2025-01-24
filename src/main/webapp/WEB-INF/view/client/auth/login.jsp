@@ -49,6 +49,9 @@
                                         <c:if test="${param.error != null}">
                                             <div class="my-2" style="color: red;">Invalid email or password</div>
                                         </c:if>
+                                        <c:if test="${param.logout != null}">
+                                            <div class="my-2" style="color: rgb(0, 255, 89);">You've signed out successfully </div>
+                                        </c:if>
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp" name="username"
