@@ -45,9 +45,9 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="dropdownMenuLink">
                                 <li class="d-flex align-items-center flex-column" style="min-width: 300px;">
-                                    <img src="/client/img/avatar.jpg" style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;" alt="">
+                                    <img src="/client/img/${sessionScope.avatar}" style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;" alt="">
                                     <div class="text-center my-3">
-                                        <c:out value="${pageContext.request.userPrincipal.name}"/>
+                                        <c:out value="${sessionScope.fullname}"/>
                                     </div>
                                 </li>
                                 <li><a class="dropdown-item" href="#">Detailed information</a></li>
