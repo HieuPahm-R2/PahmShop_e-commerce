@@ -122,13 +122,16 @@
                                                         <h4>${product.name}</h4>
                                                     </a>
                                                     <p>${product.shortDesc}</p>
-                                                    <div class="d-flex  flex-lg-wrap">
+                                                    <div class="d-flex  flex-lg-wrap justify-content-center">
                                                         <p class="text-dark fw-bold mb-3" 
                                                         style="width: 100%; text-align: center; font-size: 15px;">
                                                         <fmt:formatNumber type="number" value="${product.price}"/> vnd
                                                         </p>
-                                                        <a href="#" 
-                                                        class="mx-auto border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                        <form action="/add-product-to-cart/${product.id}" method="post">
+                                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                                            <button class="mx-auto border border-secondary rounded-pill px-3 text-primary">
+                                                                <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -273,7 +276,8 @@
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                     <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                                 </div>
                                             </div>
                                         </div>

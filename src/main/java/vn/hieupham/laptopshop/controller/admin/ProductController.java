@@ -1,6 +1,7 @@
 package vn.hieupham.laptopshop.controller.admin;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +44,7 @@ public class ProductController {
      //Show detail product
    @GetMapping("/admin/product/{id}")
    public String getProductDetailPage(Model model, @PathVariable long id){
-    Product pr = this.productService.findById(id);
+    Product pr = this.productService.fetchProductById(id).get();
     model.addAttribute("product", pr);
     model.addAttribute("id", id);
     return "admin/product/detail";
@@ -64,7 +65,7 @@ public class ProductController {
     //Update Info Product
    @GetMapping("/admin/product/update/{id}")
    public String getUpdateProductPage(Model model, @PathVariable long id){
-     Product currentProduct = this.productService.findById(id);
+     Optional<Product> currentProduct = this.productService.fetchProductById(id);
      model.addAttribute("newProduct", currentProduct);
      return "admin/product/update";
    }
@@ -76,7 +77,7 @@ public class ProductController {
         return "admin/product/update";
     }
             //logic update
-    Product currentProduct = this.productService.findById(pr.getId());
+    Product currentProduct = this.productService.fetchProductById(pr.getId()).get();
     if(currentProduct != null){
         if(!file.isEmpty()){
             String img = this.uploadService.handleSaveUploadFile(file, "product");
@@ -108,6 +109,4 @@ public class ProductController {
     return "redirect:/admin/product";
    }
 
-  
-   
 }

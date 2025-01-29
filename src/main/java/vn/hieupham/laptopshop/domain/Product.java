@@ -23,7 +23,7 @@ public class Product {
 
     @NotNull
     @DecimalMin(value = "0", inclusive = false, message = " Giá sản phẩm phải lớn hơn 0")
-    private String price;
+    private Double price;
 
     private String image;
 
@@ -53,10 +53,10 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
     public String getImage() {
@@ -106,6 +106,10 @@ public class Product {
         return "Product [id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", detailDesc="
                 + detailDesc + ", shortDesc=" + shortDesc + ", quantity=" + quantity + ", sold=" + sold + ", factory="
                 + factory + ", target=" + target + "]";
+    }
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
     }
     
 }
