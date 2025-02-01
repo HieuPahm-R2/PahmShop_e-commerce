@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,11 +75,6 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <c:if test="${cartDetails.size() == 0}">
-                               <tr>
-                                <div class="mx-auto" style="color: rgb(255, 64, 0);">NO DATA FOR DISPLAYING </div>
-                               </tr>
-                            </c:if>
                             <c:if test="${cartDetails != null}">
                                 <c:forEach var="cartDetail" items="${cartDetails}">
                                 <tr>
@@ -102,21 +96,11 @@
                                     </td>
                                     <td>
                                         <div class="input-group quantity mt-4" style="width: 100px;">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                                <i class="fa fa-minus"></i>
-                                                </button>
-                                            </div>
                                             <input type="text" class="form-control form-control-sm text-center border-0" 
                                             value="${cartDetail.quantity}"
                                             data-cartDetail-id="${cartDetail.id}"
                                             data-cartDetail-price="${cartDetail.price}"
                                             data-cartDetail-index="${status.index}">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
                                         </div>
                                     </td>
                                     <td>
@@ -127,26 +111,42 @@
                                     <td>
                                         <form action="/delete-cartProduct/${cartDetail.id}" method="post">
                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                            <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                                                <i class="fa fa-times text-danger"></i>
-                                            </button>
                                         </form>
                                     </td>
                                 </tr>
                                 </c:forEach>
                             </c:if>
-                            
                         </tbody>
                     </table>
                 </div>
-                <div class="mt-5">
-                    <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
-                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
-                </div>
+                <form:form action="/place-order " method="post" modelAttribute="cart">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <div class="mt-5 justify-content-start">
+                            <div class="col-12 col-md-6">
+                                <div class="p-4">
+                                    <h5>Customer's order</h5>
+                                    <div class="row">
+                                        <div class="col-12 form-group mb-3">
+                                            <label>Name</label>
+                                            <input class="form-control" name="receiverName" required/>
+                                        </div>
+                                        <div class="col-12 form-group mb-3">
+                                            <label>Address</label>
+                                            <input class="form-control" name="receiverName"required />
+                                        </div>
+                                        <div class="col-12 form-group mb-3">
+                                            <label>Phone number</label>
+                                            <input class="form-control" name="receiverPhone" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </form:form>
+               
                 <!--sum table-->
-                <div class="row g-4 justify-content-end">
-                    <div class="col-12 col-md-9"></div>
-                    <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+              
+                    <div class="col-12 col-md-6">
                         <div class="bg-light rounded">
                             <div class="p-4">
                                 <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
@@ -169,29 +169,11 @@
                                     <fmt:formatNumber type="number" value="${totalPrice}"/>vnd
                                 </p>
                             </div>
-                            <form:form action="/confirm-checkout" method="post" modelAttribute="cart">
-                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                <div style="display: none;">
-                                    <c:forEach var="cartDetail" items="${cart.cartDetails}" varStatus="status">
-                                        <div class="mb-3">
-                                            <div class="form-group">
-                                                <label>ID:</label>
-                                                <form:input class="form-control" type="text" value="${cartDetail.id}"
-                                                path="cartDetails[${status.index}].id" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Quantity:</label>
-                                                <form:input class="form-control" type="text" value="${cartDetail.quantity}"
-                                                path="cartDetails[${status.index}].quantity" />
-                                            </div>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-                                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="submit">Proceed Checkout</button>
-                            </form:form>
+                          
+                            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
                         </div>
                     </div>
-                </div>
+          
             </div>
         </div>
         <!-- Cart Page End -->

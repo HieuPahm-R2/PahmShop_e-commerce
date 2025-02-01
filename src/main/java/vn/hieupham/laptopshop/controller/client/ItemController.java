@@ -1,11 +1,13 @@
 package vn.hieupham.laptopshop.controller.client;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import vn.hieupham.laptopshop.domain.Cart;
@@ -14,6 +16,7 @@ import vn.hieupham.laptopshop.domain.Product;
 import vn.hieupham.laptopshop.domain.User;
 import vn.hieupham.laptopshop.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -51,13 +54,55 @@ public class ItemController {
         long idUser =(long)session.getAttribute("id");
         currentUser.setId(idUser);
         Cart cart = this.productService.fetchByUser(currentUser);
-        List<CartDetail> cartDetails = cart.getCartDetails();
+        List<CartDetail> cartDetails = cart == null ? new ArrayList<CartDetail>() : cart.getCartDetails();
         double totalPrice = 0;
         for(CartDetail cd : cartDetails){
             totalPrice += cd.getPrice() * cd.getQuantity();
         }
         model.addAttribute("cartDetails", cartDetails);
         model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("cart", cart);
         return "client/cart/viewShow"; 
     }
+    /** Delete cart page */
+    @PostMapping("/delete-cartProduct/{id}")
+    public String deleteCartDetail(@PathVariable long id, HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        long cartDetailId = id;
+        this.productService.handleDeleteCart(cartDetailId, session);
+        return "redirect:/cart";
+    }
+    /* Checkout */
+    @GetMapping("/checkout")
+    public String getCheckoutPage(Model model, HttpServletRequest request){
+        User currentUser = new User();
+        HttpSession session = request.getSession(false);
+        long idUser =(long)session.getAttribute("id");
+        currentUser.setId(idUser);
+        Cart cart = this.productService.fetchByUser(currentUser);
+        List<CartDetail> cartDetails = cart == null ? new ArrayList<CartDetail>() : cart.getCartDetails();
+        double totalPrice = 0;
+        for(CartDetail cd : cartDetails){
+            totalPrice += cd.getPrice() * cd.getQuantity();
+        }
+        model.addAttribute("cartDetails", cartDetails);
+        model.addAttribute("totalPrice", totalPrice);
+  
+        return "client/cart/checkout"; 
+    }
+
+    @PostMapping("/confirm-checkout")
+    public String getCheckoutPage(@ModelAttribute("cart") Cart cart){
+        List<CartDetail> cartDetails = cart == null ? new ArrayList<CartDetail>() : cart.getCartDetails();
+        this.productService.handleUpdateCartBeforeCheckout(cartDetails);
+        return "redirect:/checkout";
+    }
+    @PostMapping("/place-order")
+    public String handlePlaceOrder(HttpServletRequest request,
+                @RequestParam("receiverName") String receiverName,
+                @RequestParam("receiverAddress") String receiverAddress,
+                @RequestParam("receiverPhone") String receiverPhone){
+                    HttpSession session = request.getSession(false);
+                    return "redirect:/";
+                }
 }

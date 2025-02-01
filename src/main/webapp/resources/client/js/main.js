@@ -133,19 +133,64 @@
 
     // Product Quantity
     $('.quantity button').on('click', function () {
+        let changeAmount = 0;
         var button = $(this);
         var oldValue = button.parent().parent().find('input').val();
-        if (button.hasClass('btn-plus')) {
+        if(button.hasClass('btn-plus')){
             var newVal = parseFloat(oldValue) + 1;
-        } else {
-            if (oldValue > 0) {
+            changeAmount = 1;
+        }else{
+            if(oldValue > 1){
                 var newVal = parseFloat(oldValue) - 1;
-            } else {
-                newVal = 0;
+                changeAmount = -1;
+            }else{
+                newVal = 1;
             }
         }
-        button.parent().parent().find('input').val(newVal);
-    });
-
+        const input = button.parent().parent().find('input');
+        input.val(newVal);
+        //get ready for submit form (index)
+        const index = input.attr("data-cartDetail-index");
+        const el = document.getElementById(`cartDetails${index}.quantity`);
+        $(el).val(newVal);
+        /**get price to show on jsp */
+        const priceNow = input.attr("data-cartDetail-price");
+        const id = input.attr("data-cartDetail-id");
+        const priceELement = $(`p[data-cartDetail-id='${id}']`);
+        if(priceELement){
+            const newPrice = +priceNow * newVal;
+            priceELement.text(formatCurrency(newPrice.toFixed(2)) + "vnd");
+        }
+        /**update total cart price */
+        const totalPriceElement = $(`p[data-cartTotal-price]`);
+        if(totalPriceElement && totalPriceElement.length){
+            const currentTotal = totalPriceElement.first().attr("data-cartTotal-price");
+            let newTotal = +currentTotal;
+            if(changeAmount === 0){
+                newTotal = +currentTotal;
+            }else{
+                newTotal = changeAmount * (+priceNow) + (+currentTotal);
+            }
+            //reset changeAmount
+            changeAmount = 0;
+            //update
+            totalPriceElement?.each(function (index, element){
+                 //update text
+                 $(totalPriceElement[index]).text(formatCurrency(newTotal.toFixed(2)) + "vnd")
+                 //update data-attr
+                 $(totalPriceElement[index]).attr("data-cartTotal-price", newTotal)
+                });
+            }
+        })
+    //function convert VND Currency
+    function formatCurrency(value){
+        const formatter = new Intl.NumberFormat('vi-VN',{
+            style: 'decimal',
+            minimumFractionDigits: 0, //NO decimal part for whole
+        });
+        let formatted = formatter.format(value);
+        formatted = formatted.replace(/\./g,',');
+        return formatted;
+    }
 })(jQuery);
 
