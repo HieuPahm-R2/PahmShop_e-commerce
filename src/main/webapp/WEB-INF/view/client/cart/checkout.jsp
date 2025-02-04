@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,11 +72,10 @@
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Handle</th>
                           </tr>
                         </thead>
                         <tbody>
-                            <c:if test="${cartDetails != null}">
+                            
                                 <c:forEach var="cartDetail" items="${cartDetails}">
                                 <tr>
                                     <th scope="row">
@@ -108,14 +108,9 @@
                                             <fmt:formatNumber type="number" value="${cartDetail.price * cartDetail.quantity}"/>vnd
                                         </p>
                                     </td>
-                                    <td>
-                                        <form action="/delete-cartProduct/${cartDetail.id}" method="post">
-                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                        </form>
-                                    </td>
+                                    
                                 </tr>
                                 </c:forEach>
-                            </c:if>
                         </tbody>
                     </table>
                 </div>
@@ -132,7 +127,7 @@
                                         </div>
                                         <div class="col-12 form-group mb-3">
                                             <label>Address</label>
-                                            <input class="form-control" name="receiverName"required />
+                                            <input class="form-control" name="receiverAddress"required />
                                         </div>
                                         <div class="col-12 form-group mb-3">
                                             <label>Phone number</label>
@@ -142,10 +137,8 @@
                                 </div>
                             </div>
                     </div>
-                </form:form>
-               
-                <!--sum table-->
-              
+
+                    
                     <div class="col-12 col-md-6">
                         <div class="bg-light rounded">
                             <div class="p-4">
@@ -170,9 +163,13 @@
                                 </p>
                             </div>
                           
-                            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
+                            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="submit">Proceed Checkout</button>
                         </div>
                     </div>
+                </form:form>
+               
+                <!--sum table-->
+              
           
             </div>
         </div>

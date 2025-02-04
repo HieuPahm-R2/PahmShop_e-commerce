@@ -82,7 +82,7 @@
                                </tr>
                             </c:if>
                             <c:if test="${cartDetails != null}">
-                                <c:forEach var="cartDetail" items="${cartDetails}">
+                                <c:forEach var="cartDetail" items="${cartDetails}" varStatus="status">
                                 <tr>
                                     <th scope="row">
                                         <div class="d-flex align-items-center">
@@ -171,18 +171,20 @@
                             </div>
                             <form:form action="/confirm-checkout" method="post" modelAttribute="cart">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                <div style="display: none;">
+                                <div style="display: block;">
                                     <c:forEach var="cartDetail" items="${cart.cartDetails}" varStatus="status">
                                         <div class="mb-3">
                                             <div class="form-group">
                                                 <label>ID:</label>
-                                                <form:input class="form-control" type="text" value="${cartDetail.id}"
-                                                path="cartDetails[${status.index}].id" />
+                                                <form:input class="form-control" type="text"
+                                                value="${cartDetail.id}"
+                                                path="cartDetails[${status.index}].id"/>
                                             </div>
                                             <div class="form-group">
                                                 <label>Quantity:</label>
-                                                <form:input class="form-control" type="text" value="${cartDetail.quantity}"
-                                                path="cartDetails[${status.index}].quantity" />
+                                                <form:input class="form-control" type="text" 
+                                                value="${cartDetail.quantity}"
+                                                path="cartDetails[${status.index}].quantity"/>
                                             </div>
                                         </div>
                                     </c:forEach>

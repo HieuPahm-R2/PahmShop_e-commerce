@@ -153,6 +153,7 @@
         const index = input.attr("data-cartDetail-index");
         const el = document.getElementById(`cartDetails${index}.quantity`);
         $(el).val(newVal);
+        
         /**get price to show on jsp */
         const priceNow = input.attr("data-cartDetail-price");
         const id = input.attr("data-cartDetail-id");

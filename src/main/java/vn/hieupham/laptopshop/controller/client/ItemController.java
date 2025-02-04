@@ -102,7 +102,16 @@ public class ItemController {
                 @RequestParam("receiverName") String receiverName,
                 @RequestParam("receiverAddress") String receiverAddress,
                 @RequestParam("receiverPhone") String receiverPhone){
-                    HttpSession session = request.getSession(false);
-                    return "redirect:/";
-                }
+                
+                User currentUser = new User();
+                HttpSession session = request.getSession(false);
+                long idUser =(long)session.getAttribute("id");
+                currentUser.setId(idUser);
+                this.productService.handlePlaceOrder(currentUser, session, receiverName, receiverAddress, receiverPhone);
+                return "redirect:/successOrder";
+    }
+    @GetMapping("/successOrder")
+    public String getSuccessOrderPage(Model model){
+        return "client/cart/allDone";
+    }
 }

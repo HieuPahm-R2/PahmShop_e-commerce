@@ -67,6 +67,9 @@ public class Order {
     public void setUser(User user) {
         this.user = user;
     }
+    //
+    @OneToMany(mappedBy = "order")
+    private List<OrderDetail> orderDatails;
 
     public List<OrderDetail> getOrderDatails() {
         return orderDatails;
@@ -75,11 +78,6 @@ public class Order {
     public void setOrderDatails(List<OrderDetail> orderDatails) {
         this.orderDatails = orderDatails;
     }
-
-    //
-    @OneToMany(mappedBy = "order")
-    List<OrderDetail> orderDatails;
-
 
 
     public long getId() {
