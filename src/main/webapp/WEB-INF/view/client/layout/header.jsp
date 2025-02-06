@@ -23,7 +23,7 @@
             </button>
             <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="shop-detail.html" class="nav-item nav-link">Products Detail</a>
+                    <a href="/products" class="nav-item nav-link">Products Detail</a>
                     
                     <a href="#" class="nav-link nav-item">Pages</a>
                     <div class="dropdown-menu m-0 bg-secondary rounded-0">

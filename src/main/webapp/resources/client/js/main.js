@@ -1,3 +1,8 @@
+
+
+//try search
+
+
 (function ($) {
     "use strict";
 
@@ -126,6 +131,18 @@
 
         $('#videoModal').on('hide.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc);
+        })
+        //add active class to header link
+        const navElement = $('#navbarCollapse');
+        const currentUrl = window.location.pathname;
+        navElement.find('a.nav-link').each(function() {
+            const link = $(this); // get the current link in the loop
+            const href = link.attr('href');
+            if(href == currentUrl){
+                link.addClass("active");
+            }else{
+                link.removeClass('active');
+            }
         })
     });
 
